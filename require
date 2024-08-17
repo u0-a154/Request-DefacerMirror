@@ -1,0 +1,35 @@
+echo "[?] Choose
+[1] rootless
+[2] root
+[3] RUN (Not Installing The Requirements)"
+echo -n "> "; read w
+case $w in
+    1 | "rootless")
+        apt update -y && apt upgrade -y
+        apt install python -y
+        apt install python3 -y
+        apt install bash -y
+        pip install requests
+        bash .run
+        ;;
+
+    2 | "root")
+        sudo apt update -y && apt upgrade -y
+        sudo apt install python -y
+        sudo apt install python3 -y
+        sudo apt install bash -y
+        pip3 install requests
+        bash .run
+        ;;
+
+    3 | "RUN")
+        python .start.py        
+        ;;
+
+    *)
+        echo "Not A Choice, Run The Script Again..."
+        sleep 2
+        clear
+        bash require
+        ;;
+esac
